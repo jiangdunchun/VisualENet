@@ -1,21 +1,30 @@
 #include <iostream>
-#include <string>
-#include <thread>
-#include <ecal/ecal.h>
-#include <ecal/msg/string/publisher.h>
+
+#include <libipc/ipc.h>
+
+#define NUM_CLIENT 10
+#define NUM_SIGNAL_PER_CLIENT 1000
+#define NUM_SIGNAL (NUM_CLIENT * NUM_SIGNAL_PER_CLIENT)
 
 int main(int argc, char** argv) {
-    std::cout << "===start service in /ipc.test===" << std::endl;
+    bool is_server = true;
+    int client_id = -1;
 
-    eCAL::Initialize(0, nullptr, "simple_publisher");
-
-    eCAL::string::CPublisher<std::string> pub("demo_topic");
-
-    while (eCAL::Ok()) {
-        pub.Send("Hello from eCAL!");
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    if (argc > 1) {
+        is_server = false;
+        client_id = atoi(argv[1]);
+        if (client_id < 0 || client_id >= NUM_CLIENT) {
+            std::cout << "error: now a valid client id" << std::endl;
+            return 0;
+        }
     }
 
-    eCAL::Finalize();
-    return 0;
+    if (is_server) {
+        std::cout << "=== start ipc server ===" << std::endl;
+    }
+    else {
+        std::cout << "=== start ipc client " << client_id << " ===" << std::endl;
+    }
+
+    return 1;
 }
