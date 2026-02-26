@@ -2,10 +2,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug fmi4cpp.test",
+            "name": "Debug ipc.test",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/backend/build/test/fmi4cpp.test/Debug/fmi4cpp.test.exe",
+            "program": "${workspaceFolder}/backend/build/test/ipc.test/Debug/ipc.test.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/backend",
