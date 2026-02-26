@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug fmi4cpp.test",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/build/test/fmi4cpp.test/Debug/fmi4cpp.test.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/backend",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "Build backend",
+            "logging": {
+                "moduleLoad": false,
+                "trace": false
+            }
+        }
+    ]
+}
